@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a12" />
+
+  <title>Artist Vault — #UMOKAY2 Membership</title>
+  <meta name="description" content="Join the #UMOKAY2 Artist Vault. $19/mo. Exclusive guides, community, and monthly stickers." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Fill the void with floating sticker sheets */
+    body.page-vault::before, body.page-vault::after {
+      content: '';
+      position: fixed;
+      width: 400px;
+      height: 500px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.08;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body.page-vault::before {
+      top: 200px;
+      left: -150px;
+      background-image: url('assets/images/sticker-laptop-mockup.jpg');
+      transform: rotate(-25deg);
+    }
+
+    body.page-vault::after {
+      bottom: 200px;
+      right: -150px;
+      background-image: url('assets/images/sticker-bottle-mockup.jpg');
+      transform: rotate(25deg);
+    }
+
+    @media (max-width: 1200px) {
+      body.page-vault::before, body.page-vault::after {
+        display: none;
+      }
+    }
+
+    .vault-hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    .vault-hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 48px;
+      line-height: 1.1;
+      margin: 20px 0;
+      text-transform: uppercase;
+    }
+
+    .vault-hero p {
+      font-size: 18px;
+      color: var(--text-muted, #b0b0c0);
+      line-height: 1.6;
+      margin: 20px 0;
+    }
+
+    .vault-benefits {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .benefit-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--cyan, #00d9c0);
+      box-shadow: 0 0 20px rgba(0, 217, 192, 0.2);
+    }
+
+    .benefit-card__icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      margin: 16px 0 12px;
+      text-transform: uppercase;
+    }
+
+    .benefit-card p {
+      font-size: 14px;
+      color: var(--text-muted, #b0b0c0);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Sticker Club Highlight */
+    .sticker-club {
+      background: linear-gradient(135deg, rgba(0, 217, 192, 0.1), rgba(255, 115, 0, 0.1));
+      border: 2px solid var(--cyan, #00d9c0);
+      border-radius: 20px;
+      padding: 60px 40px;
+      margin: 80px auto;
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background Sheet Decals to fill the void */
+    .sticker-club::before, .sticker-club::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 400px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .sticker-club::before {
+      top: -50px;
+      left: -100px;
+      background-image: url('assets/images/sticker-laptop-mockup.jpg');
+      transform: rotate(-15deg);
+    }
+
+    .sticker-club::after {
+      bottom: -50px;
+      right: -100px;
+      background-image: url('assets/images/sticker-bottle-mockup.jpg');
+      transform: rotate(15deg);
+    }
+
+    .sticker-club > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sticker-club h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px;
+      margin: 0 0 16px;
+      text-transform: uppercase;
+    }
+
+    .sticker-club p {
+      font-size: 16px;
+      color: var(--text-muted, #b0b0c0);
+      line-height: 1.6;
+      margin: 12px 0;
+    }
+
+    .sticker-showcase {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .sticker-item {
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px dashed var(--cyan, #00d9c0);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .sticker-item:hover {
+      background: rgba(0, 217, 192, 0.1);
+      transform: scale(1.05);
+    }
+
+    .sticker-sheets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .sticker-sheet-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .sticker-sheet-img:hover {
+      transform: scale(1.02) rotate(1deg);
+      border-color: var(--cyan, #00d9c0);
+    }
+
+    @media (max-width: 600px) {
+      .sticker-sheets {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pricing-section {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .price-tag {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 64px;
+      color: var(--cyan, #00d9c0);
+      margin: 20px 0;
+      text-shadow: 0 0 30px rgba(0, 217, 192, 0.3);
+    }
+
+    .price-tag span {
+      font-size: 24px;
+      color: var(--text-muted, #b0b0c0);
+    }
+
+    .vault-cta {
+      width: 100%;
+      max-width: 500px;
+      padding: 24px 30px !important;
+      font-size: 18px !important;
+      font-family: 'Archivo Black', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #00d9c0, #00b8a9) !important;
+      box-shadow: 0 10px 30px rgba(0, 217, 192, 0.3);
+      margin: 30px auto;
+      display: block;
+    }
+
+    .vault-cta:hover {
+      box-shadow: 0 15px 50px rgba(0, 217, 192, 0.5);
+    }
+
+    .guarantee {
+      font-size: 13px;
+      color: var(--text-muted, #b0b0c0);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body class="page-vault">
+
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--blue" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--orange" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a href="/" class="brand" aria-label="UMOKAY2 home">
+      <span class="brand__hash">#</span><span class="brand__name">UMOKAY2</span>
+    </a>
+    <span class="topbar__tag">MEMBERSHIP · $19/MO</span>
+  </header>
+
+  <main>
+    <section class="vault-hero">
+      <span class="kicker kicker--cyan">EXCLUSIVE ACCESS</span>
+      <h1>The Artist Vault</h1>
+      <p>Join a community of creators. Get exclusive guides, advanced techniques, and a new sticker in the mail every month.</p>
+    </section>
+
+    <section class="vault-benefits">
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">📚</div>
+          <h3>Monthly Guides</h3>
+          <p>New technical breakdowns, color theory, and advanced techniques delivered every month.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">👥</div>
+          <h3>Creator Community</h3>
+          <p>Access to a private Discord with other artists. Share work, get feedback, stay inspired.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🎨</div>
+          <h3>Exclusive Content</h3>
+          <p>Behind-the-scenes process videos, early access to new work, and member-only drops.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">💌</div>
+          <h3>Monthly Sticker</h3>
+          <p>A new, exclusive die-cut sticker shipped to your door every month. Vault-only designs.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">⚡</div>
+          <h3>Early Access</h3>
+          <p>First dibs on limited prints, masterclasses, and new products before the public.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🎯</div>
+          <h3>Cancel Anytime</h3>
+          <p>No lock-in. Pause or cancel your membership whenever you want. No questions asked.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sticker-club">
+      <span class="kicker kicker--orange">PHYSICAL REWARDS</span>
+      <h2>The Sticker Club</h2>
+      <p>Every month, you'll receive an exclusive, limited-edition die-cut sticker in the mail.</p>
+      <p>These designs are <strong>never sold anywhere else</strong>—they're only for Vault members.</p>
+      
+      <!-- STICKER SHEETS SHOWCASE -->
+      <div class="sticker-sheets">
+        <img src="assets/images/sticker-laptop-mockup.jpg" alt="Habit sticker on laptop" class="sticker-sheet-img" />
+        <img src="assets/images/sticker-bottle-mockup.jpg" alt="Masked sticker on bottle" class="sticker-sheet-img" />
+      </div>
+
+      <div class="sticker-showcase">
+        <div class="sticker-item"><img src="assets/images/boba-avatar.jpg" alt="Habit" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;" /></div>
+        <div class="sticker-item"><img src="assets/images/drinker.png" alt="Masked" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;" /></div>
+        <div class="sticker-item"><img src="assets/images/cheese-art.jpg" alt="Greenie" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;" /></div>
+        <div class="sticker-item"><img src="assets/images/whit-art.jpg" alt="Smiley" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;" /></div>
+      </div>
+      
+      <p style="font-size: 14px; color: #fff; margin-top: 20px; font-family: 'Archivo Black', sans-serif;">
+        Habit • Masked • Greenie • Smiley • And more...
+      </p>
+
+      <img src="assets/images/sticker-tablet-mockup.jpg" alt="Smiley sticker on tablet" style="max-width: 100%; height: auto; border-radius: 12px; margin-top: 30px; box-shadow: 0 0 30px rgba(0, 217, 192, 0.2);" />
+      
+      <!-- LEAD GEN PIVOT -->
+      <div style="margin-top: 40px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px dashed var(--orange, #ff7300);">
+        <h4 style="font-family: 'Archivo Black', sans-serif; color: var(--orange, #ff7300); margin-bottom: 10px;">FREE GIVEAWAY</h4>
+        <p style="font-size: 14px; color: #fff; margin: 0;">I'm giving away <strong>5 exclusive individual stickers</strong> every week to random fans who download the Free Foundation Guide. No purchase necessary.</p>
+      </div>
+      
+      <p style="margin-top: 20px; font-style: italic; opacity: 0.8;">"Receiving these in the mail is the highlight of my month." — Vault Member</p>
+    </section>
+
+    <section class="pricing-section">
+      <h2 style="font-family: 'Archivo Black', sans-serif; font-size: 28px; text-transform: uppercase; margin-bottom: 20px;">Join Today</h2>
+      <div class="price-tag">$19<span>/mo</span></div>
+      <p style="font-size: 16px; color: var(--text-muted, #b0b0c0); margin-bottom: 30px;">Billed monthly. Cancel anytime.</p>
+      
+      <a href="https://buy.stripe.com/your-vault-link" class="btn btn--primary vault-cta">
+        <span>YES! JOIN THE VAULT</span>
+      </a>
+      
+      <p class="guarantee">Instant Access · Secure Checkout · 30-Day Money-Back Guarantee</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copy">© 2026 #UMOKAY2. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
